@@ -25,19 +25,32 @@ One-click free deployment of your private ChatGPT+Midjourney web application (ba
 - [x] Midjourney `Vary` changes
 - [x] Midjourney `Pan`
 - [x] Midjourney `Reroll` respawn
-- [x] Midjourney `Describe` image recognition (3.0 to be supported)
-- [x] Midjourney `Blend` (3.0 to be supported)
-- [x] Midjourney pad map (3.0 to be supported)
+- [x] Midjourney `Describe` image recognition
+- [x] Midjourney `Blend`
+- [x] Midjourney pad map
 - [x] Drawing progress percentage, real-time image display
+- [x] Customized Discord API, CDN, and Websocket support
 - [x] Support Midjourney service internally without any third-party dependencies
+
+## Transfer API
+> The following is a third-party intermediary API, and there is no guarantee for this project. Please choose to use it yourself. If you encounter any questions, please contact the corresponding platform customer service.
+
+### [GPTNB](https://goapi.gptnb.me)
+Support API access for various models such as ChatGPT, Claude, GPTs, Midjournal, etc., with ultra-low cost ratio [[Access Now]](https://goapi.gptnb.me)
 
 ## Parameter Description
 ### MJ_SERVER_ID
-Midjourney server ID
+Discord server ID
 ### MJ_CHANNEL_ID
-MidjourneyChannelID
+Discord ChannelID
 ### MJ_USER_TOKEN
-Midjourney User Token
+Discord User Token
+### MJ_DISCORD_PROXY
+Discord proxy domain, default to: `https://discord.com`
+### MJ_DISCORD_WSS_PROXY
+Discord Websocket proxy domain, default to: `wss://gateway.discord.gg`
+### MJ_DISCORD_WSS_PROXY
+Discord CDN proxy domain, default to: `https://cdn.discordapp.com`
 ### CODE
 (Optional) Set the access password on the page to prevent others from easily using it to consume the balance
 ### Other Parameters
@@ -52,7 +65,7 @@ docker run -d -p 3000:3000 \
     -e MJ_SERVER_ID="" \
     -e MJ_CHANNEL_ID="" \
     -e MJ_USER_TOKEN="" \
-    licoy/chatgpt-midjourney:v3.1.1
+    licoy/chatgpt-midjourney:v3.2.3
 ```
 ### Vercel
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FLicoy%2FChatGPT-Midjourney&env=OPENAI_API_KEY&env=MJ_SERVER_ID&env=MJ_CHANNEL_ID&env=MJ_USER_TOKEN&env=CODE&project-name=chatgpt-midjourney&repository-name=ChatGPT-Midjourney)
@@ -66,12 +79,15 @@ npm install
 npm run build
 npm run start // #or start in development mode: npm run dev
 ```
-## use
+## Use
+### ⚠ Notes
+- Remix mode needs to be turned off before drawing, otherwise you will be unable to Vary, Pan, Zoom, etc. and draw: enter `/setting` in Discord, and then click `Remix Mode` to turn it off.
+### Create a painting
 Enter your painting description starting with `/mj` in the input box to create a painting, for example:
 ```
 /mj a dog
 ```
-### Mixing images, recognizing images, and matting images (3.0 is not supported temporarily, and will be supported in succession)
+### Mixing images, recognizing images, and matting images
 ![mj-5](./docs/images/mj-5.png)
 > Tip: The pad mode/describe mode will only use the first picture, and the blend mode will use the two selected pictures in order (click the picture to remove it)
 

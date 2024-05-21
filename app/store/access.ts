@@ -15,7 +15,6 @@ export interface AccessControlStore {
   disableGPT4: boolean;
 
   openaiUrl: string;
-  useMjImgSelfProxy: boolean;
 
   updateToken: (_: string) => void;
   updateCode: (_: string) => void;
@@ -41,7 +40,6 @@ export const useAccessStore = create<AccessControlStore>()(
       hideUserApiKey: false,
       hideBalanceQuery: false,
       disableGPT4: false,
-      useMjImgSelfProxy: true,
       openaiUrl: DEFAULT_OPENAI_URL,
 
       enabledAccessControl() {
